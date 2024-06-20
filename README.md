@@ -1,6 +1,5 @@
 # POC GENERATE DOCUMENT
 
-This project provides a service for generating documents from templates and converting them from DOCX to PDF format. It is designed to be used as part of a web application where users can request documents by providing necessary data.
 
 ## FLOWCHART
 ![image](https://github.com/TongTunyarat/poc-generate-document/assets/113578736/72db42b0-17e4-420f-b8c7-df934b1aa38d)
