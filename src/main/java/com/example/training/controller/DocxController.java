@@ -2,6 +2,7 @@ package com.example.training.controller;
 
 import com.example.training.entity.Templates;
 import com.example.training.service.DocxService;
+import com.example.training.service.DownloadService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ public class DocxController {
     @Autowired
     private DocxService docxService;
 
+    @Autowired
+    private DownloadService downloadService;
+
     @PostMapping("/generate")
     public void generateDocument(
             @RequestBody Map<String, Object> requestBody, HttpServletResponse response
@@ -25,6 +29,17 @@ public class DocxController {
         Map<String, Object> content = (Map<String, Object>) requestBody.get("content");
 
         docxService.generateDocument(content, documentType, response);
+    }
+
+    @PostMapping("/download")
+    public void downloadDocument(
+            @RequestBody Map<String, Object> requestBody, HttpServletResponse response
+    ) throws IOException {
+
+        String documentType = (String) requestBody.get("documentType");
+        Map<String, Object> content = (Map<String, Object>) requestBody.get("content");
+
+        downloadService.generateDocument(content, documentType, response);
     }
 
     @GetMapping("/templates/{code}")
